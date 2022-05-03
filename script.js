@@ -9,31 +9,3 @@ const magazinesArray = [magazine2];
 
 console.log(booksArray.toString());
 console.log(magazinesArray.toString());
-
-function table (array){
-    const table = document.getElementById("list");
-    for (const element of array) {
-        const row = document.createElement("tr");
-
-        const col1 = document.createElement("td");
-        const data1 = document.createTextNode(element.title);
-        col1.appendChild(data1);
-        row.appendChild(col1);
-
-        const col2 = document.createElement("td");
-        const data2 = document.createTextNode("€ "+element.getPublicPrice());
-        col2.appendChild(data2);
-        row.appendChild(col2);
-
-        const col3 = document.createElement("td");
-        const data3 = document.createTextNode(element.yop);
-        col3.appendChild(data3);
-        row.appendChild(col3);
-
-
-        table.appendChild(row)
-    }
-}
-
-
-table(booksArray)

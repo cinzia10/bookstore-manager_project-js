@@ -1,11 +1,12 @@
 class Publication{
-    constructor(title, publisher, type, price, discount, copies){
+    constructor(title, publisher, type, price, discount, copies,tax){
         this.title = title;
         this.publisher = publisher;
         this.type = type;
         this.price = price;
         this.copies = copies;
         this.discount = discount;
+        this.tax = tax;
     }
 
     toString(){
@@ -13,19 +14,20 @@ class Publication{
         const bookString =      "TITOLO: " + this.title + "\n" + 
                                 "CASA EDITRICE: " + this.publisher + "\n" + 
                                 "GENERE: " + this.type + "\n" +
-                                "PREZZO: " + "€" +this.getPublicPrice() + "\n" +
+                                "PREZZO: " + "€" +this.getPublicPriceWithTax() + "\n" +
                                 "SCONTO: " + this.discount+"%" + "\n"+
                                 "COPIE: " + this.copies + "\n";
                                 
         return bookString;
     }
 
-    getPublicPriceWithoutTax(){
+    getPublicPriceWithTax(){
         const discount = this.price*this.discount / 100;
         const margin = this.price * 0.3;
-        const publicPriceWithoutTax = this.price-discount+margin;
+        const tax = this.price*this.tax / 100;
+        const publicPriceWithTax = this.price+tax-discount+margin;
 
-        return publicPriceWithoutTax
+        return publicPriceWithTax
     }
 
 }
