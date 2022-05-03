@@ -1,38 +1,27 @@
-/// PROPERTIES: TITLE, EDITOR, RELEASE, CADENCE, TYPE, PRICE, DISCOUNT, COPIES
-
-
-/// METHODS:  
-/// TOSTRING()
-/// GETPUBLICPRICE() - CALCOLARE PREZZO AL PUBBLICO [PRICE+20%-DISCOUNT+30%]
-
-class Magazine {
-    constructor(title, publisher, periodicy, realease, type, price, discount, copies, releaseDate){
-        this.title = title;
-        this.publisher = publisher;
-        this.periodicy= periodicy;
+class Magazine extends Publication{
+    constructor(title, publisher, periodicity, realease, type, price, discount, copies, releaseDate){
+        super(title, publisher, type, price, discount, copies)
+        this.periodicity= periodicity;
         this.release= realease
-        this.type = type;
-        this.price = price;
-        this.discount = discount;
-        this.copies = copies;
         this.releaseDate = releaseDate;
     }
     getPublicPrice(){
-        return this.price+(this.price/100)*20-(this.price/100)*this.discount+(this.price/100)*30;
+        // return this.price+(this.price/100)*20-(this.price/100)*this.discount+(this.price/100)*30;
+        const publicPriceWithTax = super.getPublicPriceWithoutTax();
+        const tax = this.price*0.2;
+        const publicPrice = publicPriceWithTax+tax;
+        return publicPrice;
     }
 
     toString(){
-        
-        const bookString =      "Title: " + this.title + "\n" + 
-                                "Publisher: " + this.publisher + "\n" + 
-                                "Periodicy: " + this.periodicy + "\n" + 
-                                "Release: " + this.release + "\n" +
-                                "Type: " + this.type + "\n" +
-                                "Price: " + "€" + this.getPublicPrice() + "\n" +
-                                "Discount: " + this.discount+"%" + "\n" +
-                                "Copies: " + this.copies + "\n" +
-                                "Release Date: " + this.releaseDate;
+
+        const magazineString =  super.toString()+
+                                "PERIODICITA': " + this.periodicity + "\n" +
+                                "NUMERO USCITA: " + this.release + "\n" +
+                                "DATA DI USCITA: " + this.releaseDate;
                                 
-        return bookString;
+                                
+        return magazineString;
     }
 }
+

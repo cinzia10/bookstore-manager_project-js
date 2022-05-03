@@ -1,0 +1,9 @@
+#list{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#list td{
+    border-bottom: solid black 1px;
+    text-align: center;
+}
