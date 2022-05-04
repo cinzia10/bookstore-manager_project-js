@@ -30,4 +30,8 @@ class Publication{
         return publicPriceWithTax
     }
 
+    getTime(){
+        
+    }
+
 }

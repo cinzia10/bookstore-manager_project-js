@@ -3,7 +3,7 @@ class Magazine extends Publication{
         super(title, publisher, type, price, discount, copies, 20)
         this.periodicity= periodicity;
         this.release= realease
-        this.releaseDate = releaseDate;
+        this._releaseDate = releaseDate.getTime();
     }
     // getPublicPrice(){
     //     // return this.price+(this.price/100)*20-(this.price/100)*this.discount+(this.price/100)*30;
@@ -13,6 +13,15 @@ class Magazine extends Publication{
     //     return publicPrice;
     // }
 
+    get releaseDate(){
+        const date = new Date(this._releaseDate);
+        return date;
+    }
+
+    set releaseDate(value){
+        const time = value.getTime();
+        this._releaseDate = time;
+    }
 
     toString(){
 
